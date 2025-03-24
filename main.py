@@ -1,23 +1,7 @@
-plr = sprites.create(img("""
-    . . . . . . 5 5 5 5 . . . . . .
-    . . . . 5 5 5 5 5 5 5 . . . . .
-    . . . 5 5 5 5 5 5 5 5 5 . . . .
-    . . . 5 5 5 5 5 5 5 5 5 . . . .
-    . . . . 5 5 5 5 5 5 5 . . . . .
-    . . . . . 5 5 5 5 5 . . . . . .
-    . . . . . . 5 5 5 . . . . . . .
-    . . . . . . 5 5 5 . . . . . . .
-    . . . . . 5 5 5 5 5 . . . . . .
-    . . . . . 5 . . . 5 . . . . . .
-    . . . . . 5 . . . 5 . . . . . .
-    . . . . . 5 . . . 5 . . . . . .
-    . . . . . 5 . . . 5 . . . . . .
-    . . . . . 5 5 5 5 5 . . . . . .
-"""), SpriteKind.player)
+plr = sprites.create(assets.image("""p"""), SpriteKind.player)
 
 
 user_words = []
-
 
 prompts = [
     "Enter a destination",
@@ -25,7 +9,6 @@ prompts = [
     "Enter a time (Hours)",
     "Enter an interesting thing seen"
 ]
-
 
 for prompt in prompts:
     word = game.ask_for_string(prompt)
@@ -37,3 +20,18 @@ story += "It took us " + user_words[2] + " to get there.\n"
 story += "We even got to see " + user_words[3] + " there. We took a bunch of photos of it."
 
 game.splash(story)
+
+
+star_list = []
+
+
+for i in range(10):
+    star = sprites.create(assets.image("""st"""), SpriteKind.food)
+    star.set_position(randint(0, 160), randint(0, 120))
+    star_list.append(star)
+    pause(100)
+
+
+for star in star_list:
+    star.set_flag(SpriteFlag.INVISIBLE, True)
+    pause(100)
